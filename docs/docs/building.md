@@ -43,18 +43,20 @@ cd valhalla
 
 git clone https://github.com/microsoft/vcpkg && git -C vcpkg checkout <some-tag>
 ./vcpkg/bootstrap-vcpkg.sh
-# windows: cmd.exe /c bootstrap-vcpkg.bat
+# windows: cmd.exe /c .\vcpkg\bootstrap-vcpkg.bat
 
 # only build Release versions of dependencies, not Debug
 echo "set(VCPKG_BUILD_TYPE Release)" >> vcpkg/triplets/x64-linux.cmake
-# windows: echo.set(VCPKG_BUILD_TYPE release)>> .\vcpkg\triplets\x64-windows.cmake
+# windows: echo set(VCPKG_BUILD_TYPE release)>> .\vcpkg\triplets\x64-windows.cmake
 # osx: echo "set(VCPKG_BUILD_TYPE release)" >> vcpkg/triplets/arm64-osx.cmake
 
 # vcpkg will install everything during cmake configuration
 # if you want to ENABLE_SERVICES=ON, install https://github.com/kevinkreiser/prime_server#build-and-install (no Windows)
 cmake -B build -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmake -DENABLE_SERVICE=OFF
 cmake --build build -- -j$(nproc)
-# windows: cmake --build build --config Release -- /clp:ErrorsOnly /p:BuildInParallel=true /m:4
+# windows:
+#   cmake -B build -DCMAKE_TOOLCHAIN_FILE=%CD%\vcpkg\scripts\buildsystems\vcpkg.cmake -DENABLE_SERVICE=OFF
+#   cmake --build build --config Release -- /clp:ErrorsOnly /p:BuildInParallel=true /m:4
 # osx: cmake --build build -- -j$(sysctl -n hw.physicalcpu)
 ```
 
