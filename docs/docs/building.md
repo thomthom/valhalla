@@ -52,10 +52,10 @@ echo "set(VCPKG_BUILD_TYPE Release)" >> vcpkg/triplets/x64-linux.cmake
 
 # vcpkg will install everything during cmake configuration
 # if you want to ENABLE_SERVICES=ON, install https://github.com/kevinkreiser/prime_server#build-and-install (no Windows)
-cmake -B build -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmake -DENABLE_SERVICE=OFF
+cmake -B build -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmake -DENABLE_SERVICES=OFF
 cmake --build build -- -j$(nproc)
 # windows:
-#   cmake -B build -DCMAKE_TOOLCHAIN_FILE=%CD%\vcpkg\scripts\buildsystems\vcpkg.cmake -DENABLE_SERVICE=OFF
+#   cmake -B build -DCMAKE_TOOLCHAIN_FILE=%CD%\vcpkg\scripts\buildsystems\vcpkg.cmake -DENABLE_SERVICES=OFF
 #   cmake --build build --config Release -- /clp:ErrorsOnly /p:BuildInParallel=true /m:4
 # osx: cmake --build build -- -j$(sysctl -n hw.physicalcpu)
 ```
