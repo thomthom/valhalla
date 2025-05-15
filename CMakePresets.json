@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "cli-vscode-arm64-release",
+      "displayName": "Release (arm64, with vcpkg)",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "arm64",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake",
+        "VCPKG_OVERLAY_PORTS": "${sourceDir}/overlay-ports-vcpkg",
+        "VCPKG_TARGET_TRIPLET": "arm64-windows",
+        "VCPKG_INSTALL_OPTIONS": "--allow-unsupported",
+        "CMAKE_BUILD_TYPE": "Release",
+        "ENABLE_SERVICES": "OFF"
+      }
+    }
+  ]
+}

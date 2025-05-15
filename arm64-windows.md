@@ -14,3 +14,8 @@ vcpkg install --triplet arm64-windows --allow-unsupported
 ```sh
 cmake -B build -DCMAKE_TOOLCHAIN_FILE=%CD%\vcpkg\scripts\buildsystems\vcpkg.cmake -DENABLE_SERVICES=OFF -DVCPKG_TARGET_TRIPLET=arm64-windows -DVCPKG_OVERLAY_PORTS=%CD%\overlay-ports-vcpkg  -DVCPKG_INSTALL_OPTIONS="--allow-unsupported" -DCMAKE_BUILD_TYPE=Release
 ```
+
+```sh
+cmake --preset cli-vscode-arm64-release
+cmake --build --preset cli-vscode-arm64-release
+```
