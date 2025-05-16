@@ -1,0 +1,17 @@
+{
+  "include": [
+    "src",
+    "scripts"
+  ], // Only analyze these folders
+  "exclude": [
+    "build",
+    "vcpkg",
+    "**/__pycache__",
+    ".venv",
+    "third_party"
+  ],
+  "ignore": [
+    "tests/slow"
+  ], // Still visible, but diagnostics ignored
+  "useLibraryCodeForTypes": true
+}
