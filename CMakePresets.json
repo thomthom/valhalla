@@ -2,8 +2,8 @@
   "version": 3,
   "configurePresets": [
     {
-      "name": "cli-vscode-arm64-release",
-      "displayName": "Release (arm64, with vcpkg)",
+      "name": "base-arm64",
+      "hidden": true,
       "generator": "Visual Studio 17 2022",
       "architecture": "arm64",
       "binaryDir": "${sourceDir}/build",
@@ -12,9 +12,24 @@
         "VCPKG_OVERLAY_PORTS": "${sourceDir}/overlay-ports-vcpkg",
         "VCPKG_TARGET_TRIPLET": "arm64-windows",
         "VCPKG_INSTALL_OPTIONS": "--allow-unsupported",
-        "CMAKE_BUILD_TYPE": "Release",
         "ENABLE_SERVICES": "OFF"
       }
+    },
+    {
+      "name": "cli-vscode-arm64",
+      "inherits": "base-arm64"
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "cli-vscode-arm64-debug",
+      "configurePreset": "cli-vscode-arm64",
+      "configuration": "Debug"
+    },
+    {
+      "name": "cli-vscode-arm64-relwithdebinfo",
+      "configurePreset": "cli-vscode-arm64",
+      "configuration": "RelWithDebInfo"
     }
   ]
 }
