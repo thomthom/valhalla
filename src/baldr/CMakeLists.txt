@@ -2,9 +2,16 @@
 set(tz_db_files africa antarctica asia australasia backward etcetera europe
   northamerica southamerica leapseconds)
 
+## Select make command based on platform
+if(WIN32)
+  set(MAKE_CMD nmake)
+else()
+  set(MAKE_CMD make)
+endif()
+
 # Process the leap seconds file (it's in .gitignore of the tz repo)
 add_custom_command(OUTPUT ${VALHALLA_SOURCE_DIR}/third_party/tz/leapseconds
-COMMAND nmake leapseconds
+COMMAND ${MAKE_CMD} leapseconds
 WORKING_DIRECTORY ${VALHALLA_SOURCE_DIR}/third_party/tz
 COMMENT "Compiling third_party/tz/leapseconds with awk"
 DEPENDS ${VALHALLA_SOURCE_DIR}/third_party/tz/leapseconds.awk)
