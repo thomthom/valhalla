@@ -45,7 +45,7 @@ cd valhalla
 # Clone vcpkg for dependencies:
 git clone https://github.com/microsoft/vcpkg && git -C vcpkg checkout <some-tag>
 ```
-### Bootstrap vcpk
+### Bootstrap `vcpkg`
 
 ```bash
 # linux / macOS
@@ -89,7 +89,7 @@ cmake -B build -DCMAKE_TOOLCHAIN_FILE=$PWD/vcpkg/scripts/buildsystems/vcpkg.cmak
 cmake -B build -DCMAKE_TOOLCHAIN_FILE=%CD%\vcpkg\scripts\buildsystems\vcpkg.cmake -DENABLE_SERVICES=OFF
 ```
 
-###  Build
+### Build
 
 ```bash
 # linux
